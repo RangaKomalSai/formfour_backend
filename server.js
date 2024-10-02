@@ -161,7 +161,7 @@ app.get("/api/get-analysis-data", (req, res) => {
 app.post("/api/filter", upload.single("file"), (req, res) => {
   try {
     const filterData = req.body;
-    const { filterType, order, cutIn, cutOut } = filterData;
+    const { filterType, order, cutIn, cutOut, sampleRate } = filterData;
     const file = req.file;
 
     // Validate the input data
@@ -185,6 +185,7 @@ app.post("/api/filter", upload.single("file"), (req, res) => {
           order,
           cutIn,
           cutOut,
+          sampleRate
         ]);
 
         // Capture any output from the Python script (optional for logging)

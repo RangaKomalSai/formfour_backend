@@ -259,6 +259,7 @@ if __name__ == "__main__":
         order = int(sys.argv[5])
         cut_in = float(sys.argv[6])
         cut_out = float(sys.argv[7])
+        sample_rate = float(sys.argv[8])
 
         df = pd.read_csv(input_file, delimiter='\t', header=None)
         # data = df
@@ -279,11 +280,11 @@ if __name__ == "__main__":
 
             # Apply the selected transformation based on user input
             if filter_type == 'lowpass':
-                result = passfilter(filter=filter_type,data=data,cutoff=cut_in,order=order)
+                result = passfilter(filter=filter_type,data=data,cutoff=cut_in,order=order,sample_rate=sample_rate)
             elif filter_type == 'highpass':
-                result = passfilter(filter=filter_type,data=data,cutoff=cut_out,order=order)
+                result = passfilter(filter=filter_type,data=data,cutoff=cut_out,order=order,sample_rate=sample_rate)
             elif filter_type == 'bandpass':
-                result = passfilter(filter=filter_type,data=data,cutoff=cut_out,order=order)
+                result = passfilter(filter=filter_type,data=data,cutoff=cut_out,order=order,sample_rate=sample_rate)
 
             # Plot the magnitude spectrum
             # plt.plot(f, result, label=f'Signal {i+1}')
